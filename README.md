@@ -61,7 +61,7 @@ Follow these steps to get the project up and running on your local machine.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/cinesphere.git](https://github.com/YOUR_USERNAME/cinesphere.git)
+    git clone [https://github.com/viranora/cinesphere.git](https://github.com/viranora/cinesphere.git)
     cd cinesphere
     ```
 
