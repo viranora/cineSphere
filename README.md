@@ -70,14 +70,12 @@ Follow these steps to get the project up and running on your local machine.
     npm install
     ```
 
-3.  **Set up your API Key:**
-    * Go to the `src/api/` directory.
-    * Open the `tmdbApi.js` file.
-    * Find the `API_KEY` constant and replace `'YOUR_API_KEY_HERE'` with your actual TMDb API key.
+3.  **Set up your environment variables:**
+    * Create a .env file in the root directory and add your TMDb API key like this:
 
-    ```javascript
-    // src/api/tmdbApi.js
-    const API_KEY = 'bb67cee5c76856fd4ac1cc04ccfb074b'; // Burayı kendi anahtarınızla değiştirin
+    .env
+    ```
+    REACT_APP_TMDB_API_KEY=your_tmdb_api_key_here 
     ```
 
 4.  **Run the development server:**
