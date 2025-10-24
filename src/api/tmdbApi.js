@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_KEY = 'bb67cee5c76856fd4ac1cc04ccfb074b'; 
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
 export const fetchPopularMovies = (page = 1) => {
