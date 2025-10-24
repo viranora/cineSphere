@@ -1,9 +1,8 @@
-// src/pages/PersonDetailPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { 
   fetchPersonDetails, 
-  PERSON_PROFILE_URL, // Artık w500'ü çekecek
+  PERSON_PROFILE_URL,  
   IMAGE_BASE_URL 
 } from '../api/tmdbApi';
 
@@ -43,11 +42,9 @@ const PersonDetailPage = () => {
     <div className="py-8">
       <div className="flex flex-col md:flex-row gap-8">
         
-        {/* Sol Taraf: Oyuncu Fotoğrafı (GÜNCELLENDİ) */}
+        {/* Sol Taraf: Oyuncu Fotoğrafı  */}
         <div className="flex-shrink-0 w-64 md:w-72 mx-auto md:mx-0"> 
-          {/* Eskisi: w-full md:w-80 mx-auto md:mx-0
-            Yenisi: w-64 (mobilde) md:w-72 (PC'de) ve mobilde ortalı
-          */}
+       
           <img
             src={person.profile_path ? `${PERSON_PROFILE_URL}${person.profile_path}` : 'https://via.placeholder.com/500x750?text=Foto+Yok'}
             alt={person.name}
@@ -55,7 +52,7 @@ const PersonDetailPage = () => {
           />
         </div>
 
-        {/* Sağ Taraf: Biyografi ve Bilgiler (Değişiklik yok) */}
+        {/* Sağ Taraf: Biyografi ve Bilgiler  */}
         <div className="flex-grow text-white">
           <h1 className="text-4xl md:text-6xl font-bold">{person.name}</h1>
           
@@ -82,7 +79,7 @@ const PersonDetailPage = () => {
         </div>
       </div>
 
-      {/* Alt Bölüm: Rol Aldığı Filmler (Değişiklik yok) */}
+      {/* Alt Bölüm: Rol Aldığı Filmler   */}
       <div className="mt-16">
         <h2 className="text-3xl font-bold text-white mb-6">Rol Aldığı Filmler</h2>
         <div className="flex overflow-x-auto gap-4 pb-4">

@@ -1,21 +1,19 @@
-// src/components/Navbar.jsx
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useUserLists } from '../context/UserListsContext'; // Context'i import et
+import { useUserLists } from '../context/UserListsContext'; 
 
 const Navbar = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const { profilePic, setProfilePic } = useUserLists(); // Context'ten fotoğrafı al
+  const { profilePic, setProfilePic } = useUserLists(); 
   const navigate = useNavigate();
 
-  // Çıkış yap, localStorage'ı temizler
   const handleLogout = () => {
     localStorage.removeItem('likedMovies');
     localStorage.removeItem('savedMovies');
     localStorage.removeItem('profilePic');
-    setProfilePic(null); // Context'i de temizle
+    setProfilePic(null);
     setIsDropdownOpen(false);
-    navigate('/'); // Ana sayfaya git
+    navigate('/'); 
   };
 
   return (
@@ -34,8 +32,8 @@ const Navbar = () => {
             Keşfet
           </Link>
         </div>
-        
-        {/* Sağ Taraf: Profil Menüsü (Her zaman görünür) */}
+
+        {/* Sağ Taraf: Profil Menüsü */}
         <div className="relative">
           <button
             onClick={() => setIsDropdownOpen(prev => !prev)}

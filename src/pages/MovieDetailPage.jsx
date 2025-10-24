@@ -1,6 +1,4 @@
-// src/pages/MovieDetailPage.jsx
-// ... (Tüm import'lar aynı kalacak, Link zaten import edilmiş olmalı) ...
-import React, { useState, useEffect } from 'react';
+ import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom'; 
 import { 
   fetchMovieDetails, 
@@ -12,7 +10,7 @@ import {
 import ColorThief from 'colorthief';
 
 const MovieDetailPage = () => {
-  // ... (Tüm state'ler ve useEffect'ler aynı kalacak) ...
+ 
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
   const [similarMovies, setSimilarMovies] = useState([]);
@@ -84,7 +82,7 @@ const MovieDetailPage = () => {
 
         {/* İçerik Bölümü */}
         <div className="container mx-auto p-4 md:p-8 relative -mt-32">
-          {/* ... (Afiş ve Detaylar - Değişiklik Yok) ... */}
+ 
           <div className="flex flex-col md:flex-row gap-8">
             <div className="flex-shrink-0 w-64 mx-auto md:mx-0">
               <img 
@@ -124,13 +122,13 @@ const MovieDetailPage = () => {
             </div>
           </div>
 
-          {/* Oyuncu Kadrosu Bölümü - (GÜNCELLENDİ) */}
+          {/* Oyuncu Kadrosu Bölümü  */}
           <div className="mt-16">
             <h2 className="text-3xl font-bold text-white mb-6">Oyuncu Kadrosu</h2>
             <div className="flex overflow-x-auto gap-4 pb-4">
               {cast && cast.length > 0 ? (
                 cast.map(actor => (
-                  // GÜNCELLEME: Tüm kart <Link> ile sarmalandı
+ 
                   <Link 
                     to={`/person/${actor.id}`} 
                     key={actor.cast_id} 
@@ -151,7 +149,7 @@ const MovieDetailPage = () => {
             </div>
           </div>
           
-          {/* Benzer Filmler Bölümü - (Değişiklik Yok) */}
+          {/* Benzer Filmler Bölümü  */}
           <div className="mt-16">
             <h2 className="text-3xl font-bold text-white mb-6">Benzer Filmler</h2>
             <div className="flex overflow-x-auto gap-4 pb-4">
@@ -181,7 +179,7 @@ const MovieDetailPage = () => {
         </div>
       </div>
 
-      {/* Fragman Modal'ı - (Değişiklik Yok) */}
+      {/* Fragman Modal'ı*/}
       {isModalOpen && trailerToPlay && (
         <div onClick={() => setIsModalOpen(false)} className="fixed inset-0 z-[60] bg-black/80 backdrop-blur-sm flex justify-center items-center p-4">
           <div onClick={(e) => e.stopPropagation()} className="bg-black w-full max-w-4xl aspect-video rounded-lg shadow-2xl relative">

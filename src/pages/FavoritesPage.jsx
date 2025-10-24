@@ -1,11 +1,10 @@
-// src/pages/FavoritesPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useUserLists } from '../context/UserListsContext';
 import { fetchMovieDetails } from '../api/tmdbApi';
 import MovieCard from '../components/MovieCard';
 
 const FavoritesPage = () => {
-  const { likedMovies } = useUserLists(); // 1. Beğenilen film ID'lerini al
+  const { likedMovies } = useUserLists(); 
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -19,13 +18,12 @@ const FavoritesPage = () => {
       return;
     }
 
-    // 2. ID listesindeki her film için API'dan detayları çek
     const fetchMovies = async () => {
-      // Promise.all ile tüm istekleri aynı anda yap
+
       const moviePromises = likedMovies.map(id => fetchMovieDetails(id));
       try {
         const movieResponses = await Promise.all(moviePromises);
-        setMovies(movieResponses.map(res => res.data)); // Gelen verileri state'e kaydet
+        setMovies(movieResponses.map(res => res.data)); 
       } catch (err) {
         console.error("Favori filmler çekilirken hata:", err);
       } finally {
@@ -34,7 +32,7 @@ const FavoritesPage = () => {
     };
 
     fetchMovies();
-  }, [likedMovies]); // Beğeni listesi değiştikçe yeniden çek
+  }, [likedMovies]); 
 
   return (
     <div className="py-8">

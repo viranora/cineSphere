@@ -1,4 +1,3 @@
-// src/pages/HomePage.jsx
 import React, { useState, useEffect } from 'react';
 import {
   fetchPopularMovies,
@@ -6,12 +5,12 @@ import {
   fetchTopRatedMovies,
   fetchUpcomingMovies
 } from '../api/tmdbApi';
-import MovieCard from '../components/MovieCard'; // Arama sonuçları için
-import MovieRow from '../components/MovieRow';   // Ana sayfa şeritleri için
+import MovieCard from '../components/MovieCard';  
+import MovieRow from '../components/MovieRow';    
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
-  // 1. TÜM VERİLER İÇİN STATE'LER
+ 
   const [popularMovies, setPopularMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
@@ -21,21 +20,20 @@ const HomePage = () => {
   const [error, setError] = useState(null);
   const [query, setQuery] = useState('');
   
-  // Arama için sayfalandırma state'leri
+ 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
 
-  // 2. ANA SAYFA VERİLERİNİ ÇEKMEK İÇİN useEffect
+ 
   useEffect(() => {
-    // Arama yapılmıyorsa ana sayfa verilerini çek
+ 
     if (!query) {
       setIsLoading(true);
       setError(null);
-      setSearchResults([]); // Arama sonuçlarını temizle
+      setSearchResults([]);  
 
-      // Birden fazla API isteğini aynı anda yap
       Promise.all([
-        fetchPopularMovies(1), // Popüler filmlerin 1. sayfasını al
+        fetchPopularMovies(1), 
         fetchTopRatedMovies(),
         fetchUpcomingMovies()
       ]).then(([popularRes, topRatedRes, upcomingRes]) => {
@@ -49,11 +47,10 @@ const HomePage = () => {
         setIsLoading(false);
       });
     }
-  }, [query]); // Sadece query boşaldığında ana sayfa verilerini yeniden çek
+  }, [query]);  
 
-  // 3. ARAMA İÇİN useEffect (Sayfalandırmalı)
   useEffect(() => {
-    // Sadece arama sorgusu varsa çalış
+ 
     if (query) {
       setIsLoading(true);
       setError(null);
@@ -72,24 +69,22 @@ const HomePage = () => {
           setIsLoading(false);
         });
     }
-  }, [query, currentPage]); // query veya currentPage değiştiğinde aramayı tetikle
+  }, [query, currentPage]);  
 
   const handleSearch = (e) => {
     e.preventDefault();
     const newQuery = e.target.elements.search.value;
     setQuery(newQuery);
-    setCurrentPage(1); // Yeni aramada 1. sayfadan başla
+    setCurrentPage(1);  
   };
 
-  // Sayfalandırma fonksiyonları (sadece arama için)
   const handlePrevPage = () => {
     if (currentPage > 1) setCurrentPage(prev => prev - 1);
   };
   const handleNextPage = () => {
     if (currentPage < totalPages) setCurrentPage(prev => prev + 1);
   };
-
-  // 4. ARAYÜZÜN KARAR VERMESİ
+ 
   const renderContent = () => {
     if (isLoading) {
       return <div className="text-center text-xl">Yükleniyor...</div>;
@@ -100,8 +95,7 @@ const HomePage = () => {
                Filmler yüklenemedi. (Hata: {error.response?.data?.status_message || error.message})
              </div>;
     }
-
-    // ARAMA SONUÇLARINI GÖSTER
+ 
     if (query) {
       return (
         <>

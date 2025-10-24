@@ -1,4 +1,3 @@
-// src/pages/ProfilePage.jsx
 import React, { useState, useEffect } from 'react';
 import { useUserLists } from '../context/UserListsContext';
 import { fetchMovieDetails } from '../api/tmdbApi';
@@ -81,9 +80,7 @@ const ProfilePage = () => {
         </div>
         
         <h1 className="text-4xl font-bold text-white mt-6">Profilim</h1>
-        {/* Kullanıcı adı ve e-posta (backend'siz versiyonda yok) */}
-
-        {/* Fotoğraf Yükleme Kontrolleri */}
+ 
         <div className="flex items-center gap-4 mt-4">
           <label 
             htmlFor="profile-upload"
@@ -95,7 +92,7 @@ const ProfilePage = () => {
             id="profile-upload" 
             type="file" 
             accept="image/*" 
-            className="hidden" // Gerçek input'u gizle
+            className="hidden" 
             onChange={handleFileChange} 
           />
           

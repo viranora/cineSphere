@@ -1,4 +1,3 @@
-// src/pages/LoginPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useUserLists } from '../context/UserListsContext';
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,10 +6,9 @@ const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { login, isAuthenticated } = useUserLists(); // isAuthenticated'i al
+  const { login, isAuthenticated } = useUserLists(); 
   const navigate = useNavigate();
-
-  // EĞER KULLANICI ZATEN GİRİŞ YAPMIŞSA, ONU /home'A YÖNLENDİR
+ 
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/home', { replace: true });
@@ -22,7 +20,7 @@ const LoginPage = () => {
     setError('');
     try {
       await login(email, password);
-      // Yönlendirme Context içinde yapılıyor
+ 
     } catch (err) {
       setError(err.response?.data?.message || 'Giriş başarısız. Lütfen bilgilerinizi kontrol edin.');
     }

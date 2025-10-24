@@ -1,4 +1,3 @@
-// src/pages/RegisterPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useUserLists } from '../context/UserListsContext';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,10 +7,9 @@ const RegisterPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-  const { register, isAuthenticated } = useUserLists(); // isAuthenticated'i al
+  const { register, isAuthenticated } = useUserLists();  
   const navigate = useNavigate();
 
-  // EĞER KULLANICI ZATEN GİRİŞ YAPMIŞSA, ONU /home'A YÖNLENDİR
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/home', { replace: true });
@@ -23,7 +21,6 @@ const RegisterPage = () => {
     setError('');
     try {
       await register(username, email, password);
-      // Yönlendirme Context içinde yapılıyor
     } catch (err) {
       setError(err.response?.data?.message || 'Kayıt başarısız. Lütfen bilgilerinizi kontrol edin.');
     }

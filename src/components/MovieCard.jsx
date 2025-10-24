@@ -1,11 +1,9 @@
-// src/components/MovieCard.jsx
 import React from 'react';
 import { IMAGE_BASE_URL } from '../api/tmdbApi';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useUserLists } from '../context/UserListsContext';
 
-// İkon SVG'leri
 const HeartIcon = ({ isLiked }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
        className={`w-6 h-6 ${isLiked ? 'text-red-500' : 'text-white'}`}>

@@ -1,13 +1,12 @@
-// src/pages/GenreResultsPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useParams, useLocation, Link } from 'react-router-dom';
 import { fetchMoviesByGenre } from '../api/tmdbApi';
 import MovieCard from '../components/MovieCard';
 
 const GenreResultsPage = () => {
-  const { genreId } = useParams(); // URL'den ID'yi al (örn: 28)
-  const location = useLocation(); // Link'ten gelen state'i okumak için
-  const genreName = location.state?.genreName || 'Seçilen Tür'; // State'den adı al (örn: "Aksiyon")
+  const { genreId } = useParams(); 
+  const location = useLocation(); 
+  const genreName = location.state?.genreName || 'Seçilen Tür'; 
 
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -23,7 +22,7 @@ const GenreResultsPage = () => {
     fetchMoviesByGenre(genreId, currentPage)
       .then(res => {
         setMovies(res.data.results);
-        setTotalPages(res.data.total_pages > 500 ? 500 : res.data.total_pages); // TMDb limiti (500 sayfa)
+        setTotalPages(res.data.total_pages > 500 ? 500 : res.data.total_pages); 
       })
       .catch(err => {
         console.error(err);
@@ -32,7 +31,7 @@ const GenreResultsPage = () => {
       .finally(() => {
         setIsLoading(false);
       });
-  }, [genreId, currentPage]); // Tür veya sayfa değiştikçe yeniden yükle
+  }, [genreId, currentPage]); 
 
   const handlePrevPage = () => {
     if (currentPage > 1) setCurrentPage(prev => prev - 1);
@@ -59,14 +58,14 @@ const GenreResultsPage = () => {
 
       {!isLoading && !error && movies.length > 0 && (
         <>
-          {/* Filmleri listele (Aynı HomePage aramasındaki gibi) */}
+          {/* Filmleri listele */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6">
             {movies.map(movie => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>
 
-          {/* Sayfalandırma (Aynı HomePage'deki gibi) */}
+          {/* Sayfalandırma */}
           <div className="flex justify-between items-center mt-12">
             <button
               onClick={handlePrevPage}

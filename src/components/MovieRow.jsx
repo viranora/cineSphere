@@ -1,11 +1,9 @@
-// src/components/MovieRow.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IMAGE_BASE_URL } from '../api/tmdbApi';
 import { motion } from 'framer-motion';
 import { useUserLists } from '../context/UserListsContext';
 
-// İkonlar (daha küçük)
 const HeartIcon = ({ isLiked }) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" 
        className={`w-5 h-5 ${isLiked ? 'text-red-500' : 'text-white'}`}>

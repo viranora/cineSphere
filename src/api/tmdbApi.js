@@ -1,4 +1,3 @@
-// src/api/tmdbApi.js
 import axios from 'axios';
 
 const API_KEY = 'bb67cee5c76856fd4ac1cc04ccfb074b'; 
@@ -44,4 +43,4 @@ export const fetchPersonDetails = (personId) => {
 export const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/w500';
 export const IMAGE_BACKDROP_URL = 'https://image.tmdb.org/t/p/w1280';
 export const PROFILE_IMAGE_URL = 'https://image.tmdb.org/t/p/w185';
-export const PERSON_PROFILE_URL = 'https://image.tmdb.org/t/p/w500'; // <-- GÜNCELLENDİ (h632 yerine w500)
+export const PERSON_PROFILE_URL = 'https://image.tmdb.org/t/p/w500'; 

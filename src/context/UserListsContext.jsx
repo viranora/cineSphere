@@ -1,17 +1,13 @@
-// src/context/UserListsContext.jsx
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
-// 1. Context'i oluştur
 const UserListsContext = createContext();
 
-// 2. Bu Context'i kullanmak için kolay bir "hook" oluştur
 export const useUserLists = () => {
   return useContext(UserListsContext);
 };
 
-// 3. Context'in "Sağlayıcısını" (Provider) oluştur
 export const UserListsProvider = ({ children }) => {
-  // State'leri localStorage'dan başlat
+
   const [likedMovies, setLikedMovies] = useState(() => {
     const saved = localStorage.getItem('likedMovies');
     return saved ? JSON.parse(saved) : [];
@@ -23,7 +19,6 @@ export const UserListsProvider = ({ children }) => {
   });
   
   const [profilePic, setProfilePic] = useState(() => {
-    // Fotoğrafı base64 string olarak localStorage'dan çek
     return localStorage.getItem('profilePic') || null;
   });
 
@@ -44,8 +39,6 @@ export const UserListsProvider = ({ children }) => {
     }
   }, [profilePic]);
 
-
-  // FONKSİYONLAR
   
   // Beğenme Fonksiyonları
   const addLikedMovie = (movieId) => {
@@ -80,7 +73,7 @@ export const UserListsProvider = ({ children }) => {
     removeSavedMovie,
     isSaved,
     profilePic,
-    setProfilePic, // Fotoğrafı güncellemek için
+    setProfilePic, 
   };
 
   return (

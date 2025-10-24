@@ -1,4 +1,3 @@
-// src/pages/DiscoverPage.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchGenres } from '../api/tmdbApi';
@@ -35,10 +34,7 @@ const DiscoverPage = () => {
         {genres.map(genre => (
           <Link
             key={genre.id}
-            // 1. Tıklandığında sonuç sayfasına yönlendir
             to={`/genre/${genre.id}`}
-            // 2. Bir sonraki sayfanın başlıkta "Aksiyon" yazabilmesi için 
-            // state ile türün adını da gönderiyoruz.
             state={{ genreName: genre.name }}
             className="flex items-center justify-center text-xl font-semibold text-white bg-white/10 backdrop-blur-lg 
                        rounded-lg h-32 text-center p-4 transition-all duration-300

@@ -1,11 +1,10 @@
-// src/pages/WatchlistPage.jsx
 import React, { useState, useEffect } from 'react';
 import { useUserLists } from '../context/UserListsContext';
 import { fetchMovieDetails } from '../api/tmdbApi';
 import MovieCard from '../components/MovieCard';
 
 const WatchlistPage = () => {
-  const { savedMovies } = useUserLists(); // 1. Kaydedilen film ID'lerini al
+  const { savedMovies } = useUserLists();  
   const [movies, setMovies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -18,8 +17,7 @@ const WatchlistPage = () => {
       setMovies([]);
       return;
     }
-
-    // 2. ID listesindeki her film için API'dan detayları çek
+ 
     const fetchMovies = async () => {
       const moviePromises = savedMovies.map(id => fetchMovieDetails(id));
       try {
@@ -33,8 +31,7 @@ const WatchlistPage = () => {
     };
 
     fetchMovies();
-  }, [savedMovies]); // Kaydetme listesi değiştikçe yeniden çek
-
+  }, [savedMovies]);  
   return (
     <div className="py-8">
       <h1 className="text-4xl font-bold text-white mb-8">Kaydettiğim Filmler</h1>
